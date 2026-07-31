@@ -20,3 +20,7 @@ HackerRank
 Beecrowd
 
 Each solution is written in Java and focuses on learning and practicing the core concepts of Java programming.
+
+NOTE:  
+The instructions for Weeks 9 and 10 have been revised because the questions were not clear.provide only the instructions.
+Additionally, the multiple-choice questions from GeeksforGeeks are unclear. It is not clear whether the questions refer to the server, the interface, or another topic. Please provide the exact questions or clarify what is being asked.
