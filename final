@@ -1,0 +1,233 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        double baseSalary = input.nextDouble();
+        double totalSales = input.nextDouble();
+
+        double commission = totalSales * 0.15;
+        double totalPay = baseSalary + commission;
+
+        System.out.printf("Total Pay: %.2f", totalPay);
+
+
+
+    }
+}
+
+
+
+
+
+
+question _4:
+
+class PrinterManager {
+    private static PrinterManager instance;
+    private int jobCount;
+
+    private PrinterManager() {
+        jobCount = 0;
+    }
+
+    public static PrinterManager getInstance() {
+        if (instance == null) {
+            instance = new PrinterManager();
+        }
+        return instance;
+    }
+
+    public void printJob(String job) {
+        jobCount++;
+        System.out.println(job);
+    }
+
+    public int getJobCount() {
+        return jobCount;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PrinterManager printer1 = PrinterManager.getInstance();
+        PrinterManager printer2 = PrinterManager.getInstance();
+
+        printer1.printJob("Job 1");
+        printer2.printJob("Job 2");
+        printer1.printJob("Job 3");
+
+        System.out.println("Final job count: " + printer1.getJobCount());
+    }
+}
+
+
+
+
+
+question_6:
+abstract class Vehicle {
+    abstract double fuelEfficiency();
+
+    public void displayInfo() {
+        System.out.println("Fuel Efficiency: " + fuelEfficiency());
+    }
+}
+
+class Car extends Vehicle {
+    public double fuelEfficiency() {
+        return 15.5;
+    }
+}
+
+class Bike extends Vehicle {
+    public double fuelEfficiency() {
+        return 40.0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        Bike bike = new Bike();
+
+        car.displayInfo();
+        bike.displayInfo();
+    }
+}
+
+
+
+question_7:
+
+
+import java.util.Scanner;
+
+interface Payable {
+    double calculateSalary(int hoursWorked, double rate) throws InvalidHoursException;
+}
+
+class InvalidHoursException extends Exception {
+    public InvalidHoursException(String message) {
+        super(message);
+    }
+}
+
+class RegularEmployee implements Payable {
+    public double calculateSalary(int hoursWorked, double rate) throws InvalidHoursException {
+        if (hoursWorked < 0) {
+            throw new InvalidHoursException("Hours worked cannot be negative");
+        }
+
+        return hoursWorked * rate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int hoursWorked = input.nextInt();
+        double rate = input.nextDouble();
+
+        RegularEmployee employee = new RegularEmployee();
+
+        try {
+            double salary = employee.calculateSalary(hoursWorked, rate);
+            System.out.printf("Salary: %.2f", salary);
+        } catch (InvalidHoursException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+question _8:
+
+
+import java.util.Scanner;
+
+abstract class LibraryItem {
+    protected String itemTitle;
+
+    public LibraryItem(String itemTitle) {
+        this.itemTitle = itemTitle;
+    }
+
+    abstract double finePerDay();
+}
+
+interface Returnable {
+    double returnItem(int daysLate) throws InvalidDaysException;
+}
+
+class InvalidDaysException extends Exception {
+    public InvalidDaysException(String message) {
+        super(message);
+    }
+}
+
+class Book extends LibraryItem implements Returnable {
+
+    public Book(String itemTitle) {
+        super(itemTitle);
+    }
+
+    public double finePerDay() {
+        return 5.0;
+    }
+
+    public double returnItem(int daysLate) throws InvalidDaysException {
+        if (daysLate < 0) {
+            throw new InvalidDaysException("daysLate cannot be negative");
+        }
+
+        return finePerDay() * daysLate;
+    }
+}
+
+class DVD extends LibraryItem implements Returnable {
+
+    public DVD(String itemTitle) {
+        super(itemTitle);
+    }
+
+    public double finePerDay() {
+        return 10.0;
+    }
+
+    public double returnItem(int daysLate) throws InvalidDaysException {
+        if (daysLate < 0) {
+            throw new InvalidDaysException("daysLate cannot be negative");
+        }
+
+        return finePerDay() * daysLate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int bookDays = input.nextInt();
+        int dvdDays = input.nextInt();
+
+        Book book = new Book("Book");
+        DVD dvd = new DVD("DVD");
+
+        try {
+            double bookFine = book.returnItem(bookDays);
+            System.out.printf("Book fine: %.2f%n", bookFine);
+        } catch (InvalidDaysException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            double dvdFine = dvd.returnItem(dvdDays);
+            System.out.printf("DVD fine: %.2f%n", dvdFine);
+        } catch (InvalidDaysException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
