@@ -1,3 +1,5 @@
+question:2 Sales Executive Pay
+
 import java.util.Scanner;
 
 public class Main {
@@ -22,7 +24,7 @@ public class Main {
 
 
 
-question _4:
+question _4:Single Printer Manager
 
 class PrinterManager {
     private static PrinterManager instance;
@@ -66,7 +68,8 @@ public class Main {
 
 
 
-question_6:
+question_6:Vehicle Fuel Efficiency
+
 abstract class Vehicle {
     abstract double fuelEfficiency();
 
@@ -99,7 +102,7 @@ public class Main {
 
 
 
-question_7:
+question_7:Payable Employees
 
 
 import java.util.Scanner;
@@ -143,7 +146,7 @@ public class Main {
 }
 
 
-question _8:
+question _8:Mini Library Fine System
 
 
 import java.util.Scanner;
